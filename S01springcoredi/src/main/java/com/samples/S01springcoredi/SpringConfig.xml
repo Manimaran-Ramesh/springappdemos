@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean name="emp" class="com.samples.S01springcoredi.Employee"
+		p:id="22" p:name="williams" />
+
+	<bean name="hospital" class="com.samples.S01springcoredi.Hospital">
+		<property name="name" value="Global Hospitals" />
+		<property name="departments">
+			<value>Casualty</value>
+		</property>
+	</bean>
+
+	<bean name="cardealer"
+		class="com.samples.S01springcoredi.CarDealer">
+		<property name="name" value="ABC Motors" />
+		<property name="models">
+			<set>
+				<value>Hyundai</value>
+				<value>Honda</value>
+				<value>Maruti</value>
+				<value>Hyundai</value>
+			</set>
+		</property>
+	</bean>
+
+
+	<bean name="customer" class="com.samples.S01springcoredi.Customer"
+		p:id="37">
+		<property name="products">
+			<map>
+				<entry key="100" value="IPhone" />
+				<entry key="200" value="Laptop" />
+				<entry key="300" value="Mobile" />
+				<entry key="400" value="Mouse" />
+				<entry key="500" value="Keyboard" />
+			</map>
+		</property>
+	</bean>
+
+	<bean name="countries"
+		class="com.samples.S01springcoredi.CountriesAndLanguages">
+		<property name="countryLanguages">
+			<props>
+				<prop key="USA">English</prop>
+				<prop key="Canada">French</prop>
+				<prop key="Germany">German</prop>
+				<prop key="Japan">Japanese</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean name="scores" class="com.samples.S01springcoredi.Scores"
+		p:math="80" p:physics="87" p:chemistry="76" />
+
+	<!-- <bean name="student" class="com.samples.S01springcoredi.Student"> <property 
+		name="scores"> <ref bean="scores" /> </property> </bean> -->
+
+	<!-- <bean name="student" class="com.samples.S01springcoredi.Student"> <property 
+		name="scores" ref="scores" /> </bean> -->
+
+	<bean name="student" class="com.samples.S01springcoredi.Student"
+		p:scores-ref="scores" />
+
+	<bean name="patient" class="com.samples.S01springcoredi.Patient"
+		p:id="11" init-method="methodOne" destroy-method="methodTwo" />
+
+</beans>
